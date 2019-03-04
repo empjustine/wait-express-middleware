@@ -26,7 +26,7 @@ function waitExpressMiddleware(middleware, req) {
             req, 
             res: { status: undefined },
             next: undefined
-        }
+        };
 
         /** 
          * wait-express-middleware test double object for an 
@@ -35,14 +35,14 @@ function waitExpressMiddleware(middleware, req) {
          */
         const res = {
             json(j) {
-                endState.res.json = j
-                resolve(endState)
+                endState.res.json = j;
+                resolve(endState);
             },
             status(s) {
-                endState.res.status = s
-                return res
+                endState.res.status = s;
+                return res;
             }
-        }
+        };
 
         /** 
          * wait-express-middleware test double object for an
@@ -50,12 +50,12 @@ function waitExpressMiddleware(middleware, req) {
          * @type function
          */
         const next = function (...err) {
-            endState.next = err
-            resolve(endState)
-        }
+            endState.next = err;
+            resolve(endState);
+        };
 
-        middleware(req, res, next)
+        middleware(req, res, next);
     })
 }
 
-module.exports = waitExpressMiddleware
+module.exports = waitExpressMiddleware;
